@@ -74,6 +74,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    let stopY = true
+    document.addEventListener('drag', (e) => {
+        stopY = true
+
+        if (e.clientY < 50) {
+            stopY = false
+            scroll(0, -1)
+        }
+
+        if ((e.clientY > ( document.documentElement.clientHeight - 50)) && !VerticalMaxed()) { 
+            stopY = false;
+            scroll(0, 1) 
+        }
+    })
+
+    document.addEventListener('dragend', function(e) {
+        stopY = true;
+    });
+
+    var VerticalMaxed = function(){ return (window.innerHeight + window.scrollY) >= document.body.offsetHeight}
+    var HorizontalMaxed = function(){ return (window.pageXOffset) > (document.body.scrollWidth - document.body.clientWidth);}
+
+    var scroll = function (stepX, stepY) {
+        var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+        window.scrollTo((scrollX + stepX), (scrollY + stepY));
+                    
+        if (!stopY) {
+            setTimeout(function () { scroll(stepX, stepY) }, 20);
+        }
+    }
+
     /*const imagesdata = []
     fetch('images/')
         .then(response => response.text())
@@ -87,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add images to the image list
             imageFiles.forEach(imageFile => {
                 console.log(`added ${imageFile}`)
-                imagesdata.push(`<img src=./${imageFile}>`)
+                imagesdata.push(`<img src=./${imageFile} draggable="true">`)
             });
         })
         .then(() => {
@@ -122,7 +154,7 @@ function adjustContainerHeight(tier) {
 
 		// Calculate the number of rows and adjust the height accordingly
 		const numRows = Math.ceil(images.length / 4); // Assuming 3 images per row
-		const newHeight = (numRows * maxHeight) + 15; // Calculate the new height
+		const newHeight = (numRows * maxHeight); // Calculate the new height
 		const tierBackground = document.querySelector(`.${tier} .letter-background`);
 		const letterBackground = document.querySelector(`.${tier} .background-square`);
 		letterBackground.style.height = `${newHeight + 10}px`; // Set the new height for the black rectangle

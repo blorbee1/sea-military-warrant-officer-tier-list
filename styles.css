@@ -21,7 +21,7 @@ body {
   .background-square {
 	width: 100px; /* Width of the colored square */
 	height: 100px; /* Height of the colored square */
-	min-height: 110px;
+	min-height: 90px;
 	margin-right: 10px; /* Spacing between colored square and black rectangle */
 	background-color: black; /* Background color for the tier letter */
 	display: flex;
@@ -67,7 +67,7 @@ body {
 	align-items: flex-start; /* Align images to the start */
 	width: 500px; /* Width of the black rectangle */
 	height: 100px; /* Maximum height of the black rectangle */
-	min-height: 100px;
+	min-height: 80px;
 	overflow: hidden; /* Add scrollbar when content exceeds max-height */
 	padding: 5px; /* Add padding to the container */
   }
