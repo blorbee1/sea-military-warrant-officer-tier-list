@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light gray background */
+}
+  
+  .tier-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px; /* Margin from the top of the screen */
+  }
+  
+  .tier {
+	display: flex;
+	align-items: flex-start; /* Align items to the start */
+	margin-bottom: 20px; /* Adjust spacing between tiers */
+  }
+  
+  .background-square {
+	width: 100px; /* Width of the colored square */
+	height: 100px; /* Height of the colored square */
+	min-height: 110px;
+	margin-right: 10px; /* Spacing between colored square and black rectangle */
+	background-color: black; /* Background color for the tier letter */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
+  .background-square.s {
+	background-color: #ff6384; /* Red */
+  }
+  
+  .background-square.a {
+	background-color: #ff9f40; /* Orange */
+  }
+  
+  .background-square.b {
+	background-color: #ffd166; /* Yellow */
+  }
+  
+  .background-square.c {
+	background-color: #06d6a0; /* Green */
+  }
+  
+  .background-square.d {
+	background-color: #118ab2; /* Blue */
+  }
+  
+  .background-square.f {
+	background-color: #6a4c93; /* Purple */
+  }  
+  
+  .letter {
+	margin: 0;
+	font-size: 24px;
+	color: white;
+  }
+  
+  .letter-background {
+	background-color: black; /* Background color for the black rectangle */
+	display: flex;
+	flex-direction: column; /* Stack images vertically */
+	flex-wrap: wrap; /* Wrap images to the next line when necessary */
+	align-items: flex-start; /* Align images to the start */
+	width: 500px; /* Width of the black rectangle */
+	height: 100px; /* Maximum height of the black rectangle */
+	min-height: 100px;
+	overflow: hidden; /* Add scrollbar when content exceeds max-height */
+	padding: 5px; /* Add padding to the container */
+  }
+  
+  .image-container {
+	display: flex; /* Display images as flex items */
+	flex-wrap: wrap; /* Wrap images to next line when necessary */
+	gap: 5px; /* Adjust the gap between images */
+	padding: 5px; /* Add padding to the container */
+	justify-content: flex-start; /* Align images to the start */
+	align-items: flex-start; /* Align images to the start */
+  }  
+  
+  .image-container img {
+	max-width: 100px; /* Set maximum width for images */
+	max-height: 100px; /* Set maximum height for images */
+	margin-right: 5px; /* Adjust spacing between images */
+  }
+
+  .image-list-container {
+    padding-top: 20px; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+}
+  
+  .image-list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 3 columns */
+    gap: 10px; /* Gap between images */
+    padding: 20px; /* Padding around the grid */
+}
+
+.image-list img {
+    max-width: 100%; /* Ensure images don't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+}
