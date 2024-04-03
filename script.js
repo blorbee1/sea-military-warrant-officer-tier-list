@@ -63,12 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 imageToRemove.parentNode.removeChild(imageToRemove);
             }
 
-            // Update the last dropped tier
+            // Update the last dropped tiers
             lastDroppedTier[imageUrl] = tier;
         });
     });
 });
-
 
 function adjustContainerHeight(tier) {
 	const imageContainer = document.getElementById(`${tier}Images`);
