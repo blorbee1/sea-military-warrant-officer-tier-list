@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageList = document.querySelector('.image-list');
 
     // Fetch image files from the "images" folder
-    fetch('./images/')
+    fetch('./docs/images/')
         .then(response => response.text())
         .then(data => {
             // Extract image file names from the response HTML
