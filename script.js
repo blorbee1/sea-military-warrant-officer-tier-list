@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageList = document.querySelector('.image-list');
 
     // Fetch image files from the "images" folder
-    fetch('images/')
+    /*fetch('images/')
         .then(response => response.text())
         .then(data => {
             // Extract image file names from the response HTML
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add images to the image list
             imageFiles.forEach(imageFile => {
                 const img = document.createElement('img');
-                img.src = imageFile;
+                img.src = "." + imageFile;
                 img.style.maxWidth = '100px'; // Set maximum width for images
                 img.style.maxHeight = '100px'; // Set maximum height for images
                 imageList.appendChild(img);
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error('Error fetching images:', error);
-        });
+        });*/
 
     // Variable to store the reference to the last dropped tier
     let lastDroppedTier = {};
@@ -93,7 +93,7 @@ function loadMoreImages() {
             for (let i = 0; i < batchSize && imageFiles.length > 0; i++) {
                 const imageUrl = imageFiles.shift();
                 const img = document.createElement('img');
-                img.src = imageUrl;
+                img.src = "." + imageUrl;
                 img.style.maxWidth = '100px'; // Set maximum width for images
                 img.style.maxHeight = '100px'; // Set maximum height for images
                 imageList.appendChild(img);
