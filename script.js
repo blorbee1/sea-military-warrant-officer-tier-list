@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageList = document.querySelector('.image-list');
 
     // Fetch image files from the "images" folder
-    fetch('images/')
+    fetch('./images/')
         .then(response => response.text())
         .then(data => {
             // Extract image file names from the response HTML
@@ -67,51 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             lastDroppedTier[imageUrl] = tier;
         });
     });
-
-    // Load images lazily when the user scrolls
-    window.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            loadMoreImages();
-        }
-    });
-
-    // Load initial batch of images
-    loadMoreImages();
 });
-
-function loadMoreImages() {
-	const imageList = document.querySelector('.image-list');
-
-    // Fetch image files from the "images" folder
-    fetch('images/')
-        .then(response => response.text())
-        .then(data => {
-            // Extract image file names from the response HTML
-            const parser = new DOMParser();
-            const htmlDocument = parser.parseFromString(data, 'text/html');
-            const imageLinks = Array.from(htmlDocument.querySelectorAll('a')).map(a => a.getAttribute('href'));
-            const imageFiles = imageLinks.filter(link => link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.gif'));
-
-            // Add images to the image list
-            const batchSize = 10;
-            for (let i = 0; i < batchSize && imageFiles.length > 0; i++) {
-                const imageUrl = imageFiles.shift();
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.style.maxWidth = '100px'; // Set maximum width for images
-                img.style.maxHeight = '100px'; // Set maximum height for images
-                imageList.appendChild(img);
-
-				img.addEventListener('dragstart', (event) => {
-                    event.dataTransfer.setData('text/plain', event.target.src); // Set image URL as data to transfer
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching images:', error);
-        });
-}
-
 
 function adjustContainerHeight(tier) {
 	const imageContainer = document.getElementById(`${tier}Images`);
